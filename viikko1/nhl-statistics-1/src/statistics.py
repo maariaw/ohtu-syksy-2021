@@ -32,7 +32,7 @@ class Statistics:
 
         result = []
         i = 0
-        while i <= how_many:
+        while i < how_many and i < len(self._players):
             result.append(sorted_players[i])
             i += 1
 
