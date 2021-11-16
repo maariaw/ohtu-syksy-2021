@@ -22,9 +22,11 @@ def main():
 
             players.append(player)
 
+    ranked = sorted(players, key=lambda player: player.points, reverse=True)
+
     print("Players from Finland", datetime.now().strftime("%d.%m.%Y %H:%M"))
 
-    for player in players:
+    for player in ranked:
         print(player)
 
 if __name__ == "__main__":
