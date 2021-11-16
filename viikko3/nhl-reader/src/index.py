@@ -12,7 +12,11 @@ def main():
 
     for player_dict in response:
         player = Player(
-            player_dict['name']
+            player_dict['name'],
+            player_dict['team'],
+            player_dict['games'],
+            player_dict['goals'],
+            player_dict['assists']
         )
 
         players.append(player)
