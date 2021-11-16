@@ -1,15 +1,15 @@
 class Player:
-    def __init__(self, name, team, games, goals, assists):
+    def __init__(self, name, team, goals, assists):
         self.name = name
         self.team = team
-        self.games = games
         self.goals = goals
         self.assists = assists
+        self.points = goals + assists
 
     
     def __str__(self):
         info = (
-            f"{self.name}, {self.team} - games: {self.games} - "
-            f"goals: {self.goals} - assists: {self.assists}"
+            f"{self.name:20} {self.team} "
+            f"{str(self.goals):2} + {str(self.assists):2} = {str(self.points)}"
         )
         return info

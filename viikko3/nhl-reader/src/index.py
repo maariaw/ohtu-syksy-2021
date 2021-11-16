@@ -16,7 +16,6 @@ def main():
             player = Player(
                 player_dict['name'],
                 player_dict['team'],
-                player_dict['games'],
                 player_dict['goals'],
                 player_dict['assists']
             )
