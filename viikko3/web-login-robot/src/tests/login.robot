@@ -1,6 +1,6 @@
 *** Settings ***
 Resource  resource.robot
-Suite Setup  Open And Configure Browser
+Suite Setup  Run Keywords  Open And Configure Browser  Reset Application
 Suite Teardown  Close Browser
 Test Setup  Create User And Go To Login Page
 
@@ -34,14 +34,6 @@ Login Should Fail With Message
 
 Submit Credentials
     Click Button  Login
-
-Set Username
-    [Arguments]  ${username}
-    Input Text  username  ${username}
-
-Set Password
-    [Arguments]  ${password}
-    Input Password  password  ${password}
 
 Create User And Go To Login Page
     Create User  kalle  kalle123
