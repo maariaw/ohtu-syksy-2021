@@ -35,6 +35,31 @@ Register With Nonmatching Password And Password Confirmation
     Submit Form
     Registering Should Fail With Message  Password confirmation did not match
 
+Login After Successful Registration
+    Set Username  kalle
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Submit Form
+    Registering Should Succeed
+    Click Element  link:Continue to main page
+    Click Button  Logout
+    Set Username  kalle
+    Set Password  kalle123
+    Submit Credentials
+    Login Should Succeed
+
+Login After Failed Registration
+    Set Username  kk
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Submit Form
+    Registering Should Fail With Message  Username is too short
+    Click Element  link:Login
+    Set Username  kk
+    Set Password  kalle123
+    Submit Credentials
+    Login Should Fail With Message  Invalid username or password
+
 *** Keywords ***
 Set Password Confirmation
     [Arguments]  ${password}
