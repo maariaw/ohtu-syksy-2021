@@ -6,6 +6,12 @@ Test Setup  Create User And Input Login Command
 Login With Correct Credentials
     Input Credentials  kalle  kalle123
     Output Should Contain  Logged in
+Login With Incorrect password
+    Input Credentials  kalle  kalle321
+    Output Should Contain  Invalid username or password
+Login With Nonexistent username
+    Input Credentials  kille  kalle123
+    Output Should Contain  Invalid username or password
 
 *** Keywords ***
 Create User And Input Login Command
