@@ -4,6 +4,7 @@ from ostos import Ostos
 class Ostoskori:
     def __init__(self):
         self._tavaroita = 0
+        self._ostokset = []
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
     def tavaroita_korissa(self):
@@ -13,10 +14,12 @@ class Ostoskori:
         # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2 
 
     def hinta(self):
-        return 0
+        hinnat = map(lambda o: o.hinta(), self._ostokset)
+        return sum(hinnat)
         # kertoo korissa olevien ostosten yhteenlasketun hinnan
 
     def lisaa_tuote(self, lisattava: Tuote):
+        self._ostokset.append(Ostos(lisattava))
         self._tavaroita += 1
 
     def poista_tuote(self, poistettava: Tuote):
