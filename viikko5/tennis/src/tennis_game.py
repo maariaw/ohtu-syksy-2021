@@ -12,40 +12,22 @@ class TennisGame:
             self.player2_score += 1
 
     def get_score(self):
-        score = ""
-
-        if self.player1_score == self.player2_score or max(self.player1_score, self.player2_score) < 4:
-            score = self.get_lower_score(self.player1_score, self.player2_score)
+        if self.player1_score == self.player2_score or \
+           max(self.player1_score, self.player2_score) < 4:
+            return self.get_lower_score(self.player1_score, self.player2_score)
         else:
-            score = self.get_four_point_score(
+            return self.get_four_point_score(
                 self.player1_score - self.player2_score)
 
-        return score
-
-    # @staticmethod
-    # def get_even_score(on_score):
-    #     scores = {
-    #         0: "Love-All",
-    #         1: "Fifteen-All",
-    #         2: "Thirty-All",
-    #         3: "Forty-All"
-    #     }
-
-    #     if on_score in scores:
-    #         return scores[on_score]
-
-    #     return "Deuce"
-
-    @staticmethod
-    def get_four_point_score(minus_result):
+    def get_four_point_score(self, minus_result):
         if minus_result == 1:
-            score = "Advantage player1"
+            score = "Advantage " + self.player1_name
         elif minus_result == -1:
-            score = "Advantage player2"
+            score = "Advantage " + self.player2_name
         elif minus_result >= 2:
-            score = "Win for player1"
+            score = "Win for " + self.player1_name
         else:
-            score = "Win for player2"
+            score = "Win for " + self.player2_name
         return score
 
     @staticmethod
