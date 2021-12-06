@@ -86,17 +86,21 @@ class Summa:
     def __init__(self, sovellus, lue_arvo):
         self.sovellus = sovellus
         self.lue_arvo = lue_arvo
+        self.arvo = 0
 
     def suorita(self):
-        self.sovellus.plus(int(self.lue_arvo()))
+        self.arvo = self.lue_arvo()
+        self.sovellus.plus(self.arvo)
 
 class Erotus:
     def __init__(self, sovellus, lue_arvo):
         self.sovellus = sovellus
         self.lue_arvo = lue_arvo
+        self.arvo = 0
 
     def suorita(self):
-        self.sovellus.miinus(int(self.lue_arvo()))
+        self.arvo = self.lue_arvo()
+        self.sovellus.miinus(self.arvo)
 
 class Nollaus:
     def __init__(self, sovellus, lue_arvo):
