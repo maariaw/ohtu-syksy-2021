@@ -16,15 +16,15 @@ class TennisGame:
            max(self.player1_score, self.player2_score) < 4:
             return self.get_lower_score(self.player1_score, self.player2_score)
         else:
-            return self.get_four_point_score(
-                self.player1_score - self.player2_score)
+            point_difference = self.player1_score - self.player2_score
+            return self.get_four_point_score(point_difference)
 
-    def get_four_point_score(self, minus_result):
-        if minus_result == 1:
+    def get_four_point_score(self, point_difference):
+        if point_difference == 1:
             score = "Advantage " + self.player1_name
-        elif minus_result == -1:
+        elif point_difference == -1:
             score = "Advantage " + self.player2_name
-        elif minus_result >= 2:
+        elif point_difference >= 2:
             score = "Win for " + self.player1_name
         else:
             score = "Win for " + self.player2_name
