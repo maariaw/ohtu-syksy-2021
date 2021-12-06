@@ -114,9 +114,15 @@ class Nollaus:
     def __init__(self, sovellus, lue_arvo):
         self.sovellus = sovellus
         self.lue_arvo = lue_arvo
+        self.paluuarvo = 0
 
     def suorita(self):
+        self.paluuarvo = self.sovellus.tulos
         self.sovellus.nollaa()
+        self.sovellus.muista_komento(self)
+
+    def kumoa(self):
+        self.sovellus.aseta_arvo(self.paluuarvo)
 
 class Kumoa:
     def __init__(self, sovellus, lue_arvo):
