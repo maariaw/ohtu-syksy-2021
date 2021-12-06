@@ -86,21 +86,29 @@ class Summa:
     def __init__(self, sovellus, lue_arvo):
         self.sovellus = sovellus
         self.lue_arvo = lue_arvo
-        self.arvo = 0
+        self.paluuarvo = 0
 
     def suorita(self):
-        self.arvo = self.lue_arvo()
-        self.sovellus.plus(self.arvo)
+        self.paluuarvo = self.sovellus.tulos
+        self.sovellus.plus(self.lue_arvo())
+        self.sovellus.muista_komento(self)
+
+    def kumoa(self):
+        self.sovellus.aseta_arvo(self.paluuarvo)
 
 class Erotus:
     def __init__(self, sovellus, lue_arvo):
         self.sovellus = sovellus
         self.lue_arvo = lue_arvo
-        self.arvo = 0
+        self.paluuarvo = 0
 
     def suorita(self):
-        self.arvo = self.lue_arvo()
-        self.sovellus.miinus(self.arvo)
+        self.paluuarvo = self.sovellus.tulos
+        self.sovellus.miinus(self.lue_arvo())
+        self.sovellus.muista_komento(self)
+
+    def kumoa(self):
+        self.sovellus.aseta_arvo(self.paluuarvo)
 
 class Nollaus:
     def __init__(self, sovellus, lue_arvo):
@@ -116,4 +124,6 @@ class Kumoa:
         self.lue_arvo = lue_arvo
 
     def suorita(self):
-        self.sovellus.aseta_arvo(self.sovellus.edellinen_arvo)
+        kumous = self.sovellus.edellinen_komento.kumoa
+        if kumous:
+            kumous()
