@@ -21,21 +21,8 @@ class TennisGame:
             score = self.get_four_point_score(
                 self.player1_score - self.player2_score)
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.player1_score
-                else:
-                    score = score + "-"
-                    temp_score = self.player2_score
-
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
+            score = self.get_differing_score(
+                self.player1_score, self.player2_score)
 
         return score
 
@@ -64,3 +51,13 @@ class TennisGame:
         else:
             score = "Win for player2"
         return score
+
+    @staticmethod
+    def get_differing_score(first_score, second_score):
+        scores = {
+            0: "Love",
+            1: "Fifteen",
+            2: "Thirty",
+            3: "Forty"
+        }
+        return scores[first_score] + "-" + scores[second_score]
