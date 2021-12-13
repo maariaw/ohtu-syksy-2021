@@ -6,7 +6,8 @@ from matchers import (
     HasFewerThan,
     PlaysIn,
     All,
-    Not
+    Not,
+    Or
 )
 
 def main():
@@ -15,14 +16,12 @@ def main():
     stats = Statistics(reader)
 
     matcher = And(
-        HasAtLeast(5, "goals"),
-        HasAtLeast(5, "assists"),
-        PlaysIn("PHI")
-    )
-
-    matcher = And(
-        HasFewerThan(1, "goals"),
-        PlaysIn("NYR")
+        HasAtLeast(40, "points"),
+        Or(
+            PlaysIn("NYR"),
+            PlaysIn("NYI"),
+            PlaysIn("BOS")
+        )
     )
 
     for player in stats.matches(matcher):
