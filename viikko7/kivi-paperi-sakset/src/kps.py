@@ -1,4 +1,6 @@
 from tuomari import Tuomari
+from tekoaly import Tekoaly
+from tekoaly_parannettu import TekoalyParannettu
 
 class KPS:
     def __init__(self, io):
@@ -30,3 +32,28 @@ class KPS:
 
     def _onko_ok_siirto(self, siirto):
         return siirto == "k" or siirto == "p" or siirto == "s"
+
+class KPSPelaajaVsPelaaja(KPS):
+    def _toisen_siirto(self, _):
+        return self.io.lue("Toisen pelaajan siirto: ")
+
+class KPSTekoaly(KPS):
+    def __init__(self, io):
+        super().__init__(io)
+        self.tekoaly = Tekoaly()
+
+    def _toisen_siirto(self, _):
+        siirto = self.tekoaly.anna_siirto()
+        self.io.kirjoita(f"Tietokone valitsi: {siirto}")
+        return siirto
+
+class KPSParempiTekoaly(KPS):
+    def __init__(self, io):
+        super().__init__(io)
+        self.tekoaly = TekoalyParannettu(10)
+
+    def _toisen_siirto(self, ensimmaisen_siirto):
+        siirto = self.tekoaly.anna_siirto()
+        self.io.kirjoita(f"Tietokone valitsi: {siirto}")
+        self.tekoaly.aseta_siirto(ensimmaisen_siirto)
+        return siirto
