@@ -1,35 +1,35 @@
 from kps_pelaaja_vs_pelaaja import KPSPelaajaVsPelaaja
 from kps_tekoaly import KPSTekoaly
 from kps_parempi_tekoaly import KPSParempiTekoaly
+from kps_io import PeliIO
 
 
 def main():
+    io = PeliIO()
     while True:
-        print("Valitse pelataanko"
+        vastaus = io.lue("Valitse pelataanko"
               "\n (a) Ihmistä vastaan"
               "\n (b) Tekoälyä vastaan"
               "\n (c) Parannettua tekoälyä vastaan"
-              "\nMuilla valinnoilla lopetetaan"
+              "\nMuilla valinnoilla lopetetaan\n"
               )
 
-        vastaus = input()
-
         if vastaus.endswith("a"):
-            print(
+            io.kirjoita(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
             kaksinpeli = KPSPelaajaVsPelaaja()
             kaksinpeli.pelaa()
         elif vastaus.endswith("b"):
-            print(
+            io.kirjoita(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
             yksinpeli = KPSTekoaly()
             yksinpeli.pelaa()
         elif vastaus.endswith("c"):
-            print(
+            io.kirjoita(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
