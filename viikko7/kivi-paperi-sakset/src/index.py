@@ -1,13 +1,10 @@
-from kps import (
-    KPSPelaajaVsPelaaja,
-    KPSTekoaly,
-    KPSParempiTekoaly
-)
+from pelitehdas import Pelitehdas
 from kps_io import PeliIO
 
 
 def main():
     io = PeliIO()
+    tehdas = Pelitehdas()
 
     while True:
         vastaus = io.lue("Valitse pelataanko"
@@ -22,21 +19,21 @@ def main():
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
-            kaksinpeli = KPSPelaajaVsPelaaja(io)
+            kaksinpeli = tehdas.luo_kaksinpeli(io)
             kaksinpeli.pelaa()
         elif vastaus.endswith("b"):
             io.kirjoita(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
-            yksinpeli = KPSTekoaly(io)
+            yksinpeli = tehdas.luo_yksinpeli(io)
             yksinpeli.pelaa()
         elif vastaus.endswith("c"):
             io.kirjoita(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
-            haastava_yksinpeli = KPSParempiTekoaly(io)
+            haastava_yksinpeli = tehdas.luo_haastava_yksinpeli(io)
             haastava_yksinpeli.pelaa()
         else:
             break
