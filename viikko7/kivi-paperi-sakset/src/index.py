@@ -27,7 +27,7 @@ def main():
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
-            yksinpeli = KPSTekoaly()
+            yksinpeli = KPSTekoaly(io)
             yksinpeli.pelaa()
         elif vastaus.endswith("c"):
             io.kirjoita(

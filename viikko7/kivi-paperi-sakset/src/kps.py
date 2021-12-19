@@ -15,7 +15,7 @@ class KPS:
             self.io.kirjoita(tuomari)
 
             ekan_siirto = self.io.lue("Ensimmäisen pelaajan siirto: ")
-            tokan_siirto = self.io.lue("Toisen pelaajan siirto: ")
+            tokan_siirto = self._toisen_siirto(ekan_siirto)
 
         self.io.kirjoita("Kiitos!")
         self.io.kirjoita(tuomari)
