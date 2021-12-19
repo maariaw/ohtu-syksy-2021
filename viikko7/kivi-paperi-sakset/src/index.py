@@ -6,6 +6,7 @@ from kps_io import PeliIO
 
 def main():
     io = PeliIO()
+
     while True:
         vastaus = io.lue("Valitse pelataanko"
               "\n (a) Ihmistä vastaan"
@@ -19,7 +20,7 @@ def main():
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
             )
 
-            kaksinpeli = KPSPelaajaVsPelaaja()
+            kaksinpeli = KPSPelaajaVsPelaaja(io)
             kaksinpeli.pelaa()
         elif vastaus.endswith("b"):
             io.kirjoita(
